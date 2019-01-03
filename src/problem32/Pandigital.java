@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Paul Keller
  * @version 1.0
  */
-public class Pendigital {
+public class Pandigital {
   public static void main(String[] args) {
     ArrayList<Long> products = new ArrayList<>();
     long sum = 0;
