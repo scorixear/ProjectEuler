@@ -12,36 +12,41 @@ public class ConsecutivePrimes {
     int max = 0;
     int n = 0;
     ArrayList<Integer> primes = allPrimes(2,1000000);
-    for(int i = 0;i<primes.size();i++){
+    for(int i = primes.size()-1;i>=0;i--){
 
-        //System.out.println(i);
-        int count = getSums(primes.get(i));
+        System.out.println(i);
+        int count = getSums(primes.get(i),primes);
         if(max<count){
-          System.out.println(count+" "+i);
+          System.out.println(count+" "+primes.get(i));
           max = count;
           n = i;
         }
 
     }
-    System.out.println(n+" "+max);
+    System.out.println(primes.get(n)+" "+max);
 
   }
 
-  private static int getSums(int n) {
-    ArrayList<Integer> primes = allPrimes(2, n);
+  private static int getSums(int n, ArrayList<Integer> allPrimes) {
+    int index = allPrimes.size()-1;
+    while(allPrimes.get(index)>n){
+      index--;
+    }
+    ArrayList<Integer> primes = new ArrayList<>();
+    for(int i = 0;i<=index;i++){
+      primes.add(allPrimes.get(i));
+    }
     int maxcount = 0;
-    int count = 0;
-    int sum = 0;
-    int min = 0;
-    for(int i = primes.size()-1;i>=0;i--){
-      sum+=primes.get(i);
-      count++;
-      if(sum > n){
-        sum-=primes.get(min);
-        min++;
-        count--;
+    for(int i = 0;i<primes.size();i++){
+      for(int j = i;j<primes.size();j++){
+        int sum = 0;
+        for(int min = i;min<=j;min++){
+          sum+=primes.get(min);
+        }
+        if(sum == n){
+          if(j-i+1 >maxcount)maxcount=j-i+1;
+        }
       }
-      if(maxcount<count)maxcount = count;
     }
     return maxcount;
   }
