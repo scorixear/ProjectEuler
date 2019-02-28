@@ -1,13 +1,13 @@
 package problem50;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * @author Paul Keller
  * @version 1.0
  */
 public class ConsecutivePrimes {
-
   public static void main(String... a) {
     int max = 0;
     int n = 0;
