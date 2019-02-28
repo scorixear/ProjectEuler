@@ -39,8 +39,6 @@ public class DistinctPrimes {
         factors.add(i);
         n /= i;
       }
-
-
     }
     if (n > 2) {
       factors.add(n);
